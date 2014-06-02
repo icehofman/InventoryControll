@@ -25,11 +25,14 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @stock = Stock.find(@item.product_id)    
 
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
+        @stock.quantity = @stock.quantity - @item.quantity
+        @stock.update(quantity: @stock.quantity)
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -54,6 +57,9 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @stock = Stock.find(@item.product_id)
+    @stock.quantity = @stock.quantity + @item.quantity
+    @stock.update(quantity: @stock.quantity)
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :stocks
 
-  resources :items
+  resources :items, except: :edit
 
   resources :orders
 
