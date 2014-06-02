@@ -43,14 +43,18 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
+    @stock = Stock.find(@item.product_id)
+    @stockTotal = @stock.quantity + @item.quantity    
+    respond_to do |format|       
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
+        format.json { render :show, status: :ok, location: @item }        
+        @stock.quantity = @stockTotal - @item.quantity
+        @stock.update(quantity: @stock.quantity)
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+      end          
     end
   end
 
