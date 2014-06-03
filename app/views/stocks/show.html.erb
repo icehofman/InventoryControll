@@ -2,7 +2,7 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @stock.product_id %>
+  <%= Product.find(@stock.product_id).name %>
 </p>
 
 <p>
