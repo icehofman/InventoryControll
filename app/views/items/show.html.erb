@@ -2,7 +2,7 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @item.order_id %>
+  <%= Order.find(@item.order_id).custumer_name %>
 </p>
 
 <p>
