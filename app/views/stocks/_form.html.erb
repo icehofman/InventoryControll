@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.collection_select :product_id, Product.order(:name),:id,:name, include_blank: true %>
+    <%= f.collection_select :product_id, Product.where.not(id: Stock.pluck(:product_id)).order(:name),:id,:name, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :quantity %><br>
