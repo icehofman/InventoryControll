@@ -25,8 +25,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-    @stock = Stock.find(@item.product_id)    
-
+    @stock = Stock.find(@item.product_id) unless @item.product_id.nil?
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }

@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
 	  belongs_to :order
   	belongs_to :product
 
-  	validates_presence_of :product, :quantity
+  	validates_presence_of :product, :quantity, :product_id, :order
 
   	validates_numericality_of  :quantity, :greater_than => 0, :less_than_or_equal_to => :stock_quantity_value, on: :create
 
