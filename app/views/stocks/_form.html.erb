@@ -10,10 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.collection_select :product_id, Product.where.not(id: Stock.pluck(:product_id)).order(:name),:id,:name, include_blank: true %>
+    <% if current_page?(action: 'new') %>
+      <%= f.collection_select :product_id, Product.where.not(id: Stock.pluck(:product_id)).order(:name),:id,:name,include_blank: true %>
+    <% else %>
+      <%= f.collection_select :product_id, Product.order(:name),:id,:name, include_blank: true %>
+    <% end %>      
   </div>
   <div class="field">
     <%= f.label :quantity %><br>
