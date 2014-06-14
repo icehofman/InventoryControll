@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Products', products_path %></li>
+  <li class="previous"><%= link_to 'Show Product', @product %></li>
+</ul>
