@@ -12,7 +12,8 @@
   <tbody>
     <% @stocks.each do |stock| %>
       <tr>
-        <td><%= Product.find(stock.product_id).name %></td>
+        <td><%= # noinspection RailsChecklist05
+                Product.find(stock.product_id).name %></td>
         <td><%= stock.quantity %></td>
         <td><%= link_to 'Show', stock %></td>
         <td><%= link_to 'Edit', edit_stock_path(stock) %></td>

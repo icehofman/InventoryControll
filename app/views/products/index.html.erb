@@ -14,17 +14,17 @@
         <tr>
           <td><%= product.name %></td>
           <td><%= product.price %></td>
-          <td><%= link_to product  do %>
+          <td><%= link_to product do %>
                 <span class="glyphicon glyphicon-list-alt" data-toggle="tooltip" data-placement="left" data-original-title="Show"></span>
-            <%end%>
+            <% end %>
           </td>
-          <td><%= link_to edit_product_path(product), title: "Edit" do %>
-                <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="left" data-original-title="Show"></span>
-            <%end%>
+          <td><%= link_to edit_product_path(product) do %>
+                <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="left" data-original-title="Edit"></span>
+            <% end %>
           </td>
-          <td><%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete" do %>
-                <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="left" data-original-title="Show"></span>
-            <%end%>
+          <td><%= link_to product, method: :delete, data: {confirm: 'Are you sure?'} do %>
+                <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="left" data-original-title="Delete"></span>
+            <% end %>
           </td>
         </tr>
     <% end %>

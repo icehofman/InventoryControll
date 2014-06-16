@@ -1,3 +1,4 @@
+# noinspection ALL
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -41,14 +42,15 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
+  # noinspection RubyInstanceVariableNamingConvention
   def update
     @stock = Stock.find(@item.product_id)
-    @stockTotal = @stock.quantity + @item.quantity    
+    @stock_total = @stock.quantity + @item.quantity
     respond_to do |format|       
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }        
-        @stock.quantity = @stockTotal - @item.quantity
+        @stock.quantity = @stock_total - @item.quantity
         @stock.update(quantity: @stock.quantity)
       else
         format.html { render :edit }

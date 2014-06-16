@@ -13,8 +13,10 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= Order.find(item.order_id).custumer_name %></td>
-        <td><%= Product.find(item.product_id).name %></td>
+        <td><%= # noinspection RailsChecklist05
+                Order.find(item.order_id).custumer_name %></td>
+        <td><%= # noinspection RailsChecklist05
+                Product.find(item.product_id).name %></td>
         <td><%= item.quantity %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
