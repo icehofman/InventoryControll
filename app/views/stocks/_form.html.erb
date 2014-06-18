@@ -1,12 +1,12 @@
 <%= form_for(@stock) do |f| %>
   <% if @stock.errors.any? %>
     <div id="error_explanation">
-      <h2><%= # noinspection RubyQuotedStringsInspection
-              pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+      <h3 class="alert alert-danger"><%= # noinspection RubyQuotedStringsInspection
+              pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h3>
 
       <ul>
       <% @stock.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="alert alert-danger"><%= message %></div>
       <% end %>
       </ul>
     </div>
@@ -15,16 +15,17 @@
   <div class="field">
     <%= f.label :product_id %><br>
     <% if current_page?(action: 'new') %>
-      <%= f.collection_select :product_id, Product.where.not(id: Stock.pluck(:product_id)).order(:name),:id,:name,include_blank: true %>
+      <%= f.collection_select :product_id, Product.where.not(id: Stock.pluck(:product_id)).order(:name),:id,:name, {prompt: 'Select Product'}, {class: "form-control"} %>
     <% else %>
-      <%= f.collection_select :product_id, Product.order(:name),:id,:name, include_blank: true %>
-    <% end %>      
+      <%= f.collection_select :product_id, Product.order(:name),:id,:name, {prompt: 'Select Product'}, {class: "form-control"} %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :quantity %><br>
-    <%= f.number_field :quantity, :in => 0..1000, :step => 1 %>
+    <%= f.number_field :quantity, class: "form-control", :in => 0..1000, :step => 1 %>
   </div>
+    <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
