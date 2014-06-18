@@ -11,15 +11,19 @@ Rails.application.configure do
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
+  # noinspection RubyResolve
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
+  # noinspection RubyResolve
   config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
+  # noinspection RubyResolve
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
+  # noinspection RubyResolve
   config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.

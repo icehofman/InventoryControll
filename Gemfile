@@ -36,8 +36,3 @@ gem 'debugger', group: [:development, :test]
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
 gem 'tzinfo'
-
-group :development do
-	gem 'capistrano',  '~> 3.1'
-	gem 'capistrano-rails', '~> 1.1'
-end

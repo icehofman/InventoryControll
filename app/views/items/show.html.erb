@@ -2,12 +2,14 @@
 
 <p>
   <strong>Order:</strong>
-  <%= Order.find(@item.order_id).custumer_name %>
+  <%= # noinspection RailsChecklist05
+      Order.find(@item.order_id).custumer_name %>
 </p>
 
 <p>
   <strong>Product:</strong>
-  <%= Product.find(@item.product_id).name %>
+  <%= # noinspection RailsChecklist05
+      Product.find(@item.product_id).name %>
 </p>
 
 <p>

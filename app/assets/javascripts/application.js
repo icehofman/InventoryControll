@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
+
+$(document).on("ready page:change", function() {
+    $("[data-toggle=tooltip]").tooltip();
+});

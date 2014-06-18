@@ -2,7 +2,8 @@
 
 <p>
   <strong>Product:</strong>
-  <%= Product.find(@stock.product_id).name %>
+  <%= # noinspection RailsChecklist05
+      Product.find(@stock.product_id).name %>
 </p>
 
 <p>

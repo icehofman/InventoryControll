@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<%end%>
 
 <p>
   <strong>Name:</strong>
@@ -9,6 +11,7 @@
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Products', products_path %></li>
+  <li class="previous"><%= link_to 'Edit Product', edit_product_path(@product) %></li>
+</ul>
