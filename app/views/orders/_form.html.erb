@@ -1,12 +1,11 @@
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= # noinspection RubyQuotedStringsInspection
-              pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <h4 class="alert alert-danger"><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h4>
 
       <ul>
       <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <div class="alert alert-warning"><%= message %></div>
       <% end %>
       </ul>
     </div>
@@ -14,9 +13,10 @@
 
   <div class="field">
     <%= f.label :custumer_name %><br>
-    <%= f.text_field :custumer_name %>
+    <%= f.text_field :custumer_name, class: "form-control" %>
   </div>
+    <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
-<h1>New order</h1>
+<h2>New order</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', orders_path %>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Orders', orders_path %></li>
+</ul>
