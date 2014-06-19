@@ -1,12 +1,12 @@
 <%= form_for(@stock) do |f| %>
   <% if @stock.errors.any? %>
     <div id="error_explanation">
-      <h3 class="alert alert-danger"><%= # noinspection RubyQuotedStringsInspection
-              pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h3>
+      <h4 class="alert alert-danger"><%= # noinspection RubyQuotedStringsInspection
+              pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h4>
 
       <ul>
       <% @stock.errors.full_messages.each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
+        <div class="alert alert-warning"><%= message %></div>
       <% end %>
       </ul>
     </div>
