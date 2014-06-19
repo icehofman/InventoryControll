@@ -1,0 +1,19 @@
+<br>
+<% unless notice.nil? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<%end%>
+
+<p>
+  <strong>Product:</strong>
+  <%= Product.find(@stock.product_id).name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @stock.quantity %>
+</p>
+
+<ul class="pager">
+  <li class="previous"><%= link_to 'Stocks', stocks_path %></li>
+  <li class="previous"><%= link_to 'Edit Stock', edit_stock_path(@stock) %></li>
+</ul>

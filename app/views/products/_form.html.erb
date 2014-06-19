@@ -1,0 +1,31 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h4 class="alert alert-danger"><%= # noinspection RubyQuotedStringsInspection
+                                         pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h4>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <div class="alert alert-warning"><%= message %></div>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= # noinspection RubyQuotedStringsInspection
+        f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= # noinspection RubyQuotedStringsInspection
+        f.number_field :price, :step => 0.01, class: "form-control" %>
+  </div>
+    <br>
+    <div class="actions">
+      <%= # noinspection RubyQuotedStringsInspection
+          f.submit class: "btn btn-primary"%>
+    </div>
+
+<% end %>

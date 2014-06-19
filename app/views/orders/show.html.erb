@@ -1,0 +1,14 @@
+<br>
+<% unless notice.nil? %>
+<p id="notice" class="alert alert-success"><%= notice %></p>
+    <% end %>
+
+<p>
+  <strong>Custumer name:</strong>
+  <%= @order.custumer_name %>
+</p>
+
+<ul class="pager">
+  <li class="previous"><%= link_to 'Orders', orders_path %></li>
+  <li class="previous"><%= link_to 'Edit Order', edit_order_path(@order) %></li>
+</ul>

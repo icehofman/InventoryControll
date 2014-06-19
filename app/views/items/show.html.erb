@@ -1,0 +1,27 @@
+<br>
+<% unless notice.nil? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<p>
+  <strong>Order:</strong>
+  <%= # noinspection RailsChecklist05
+      Order.find(@item.order_id).custumer_name %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= # noinspection RailsChecklist05
+      Product.find(@item.product_id).name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item.quantity %>
+</p>
+
+<ul class="pager">
+  <li class="previous"><%= link_to 'Items', items_path %></li>
+  <li class="previous"><%= link_to 'Edit Item', edit_item_path(@item) %></li>
+</ul>
+

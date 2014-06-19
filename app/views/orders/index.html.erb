@@ -1,0 +1,36 @@
+<h2>Listing orders</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Custumer name</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.custumer_name %></td>
+          <td><%= link_to order do %>
+                <span class="glyphicon glyphicon-list-alt" data-toggle="tooltip" data-placement="left" data-original-title="Show"></span>
+            <% end %>
+          </td>
+          <td><%= link_to edit_order_path(order) do %>
+                <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="left" data-original-title="Edit"></span>
+            <% end %>
+          </td>
+          <td><%= link_to order, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="left" data-original-title="Delete"></span>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Home', root_path %></li>
+  <li class="previous"><%= link_to 'New Order', new_order_path %></li>
+</ul>
