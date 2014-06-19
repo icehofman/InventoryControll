@@ -6,13 +6,13 @@ class Item < ActiveRecord::Base
 
   	validates_numericality_of  :quantity, :greater_than => 0, :less_than_or_equal_to => :stock_quantity_value, on: :create
 
-  	validates_numericality_of  :quantity, :greater_than_or_equal_to => :stock_quantity_value, :less_than_or_equal_to => :item_quantity_value, on: :update
+  	validates_numericality_of  :quantity, :greater_than => 0,  :less_than_or_equal_to => :total_quantity_value, on: :update
   	
   	def stock_quantity_value
   		Stock.find(product_id).quantity
   	end
 
-    def item_quantity_value
-  		Item.find(id).quantity
+    def total_quantity_value
+  		Item.find(id).quantity + Stock.find(product_id).quantity
   	end
 end
