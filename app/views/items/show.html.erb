@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<br>
+<% unless notice.nil? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
 
 <p>
   <strong>Order:</strong>
@@ -17,5 +20,8 @@
   <%= @item.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Items', items_path %></li>
+  <li class="previous"><%= link_to 'Edit Item', edit_item_path(@item) %></li>
+</ul>
+
