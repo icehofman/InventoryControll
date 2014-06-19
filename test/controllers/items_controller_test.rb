@@ -20,7 +20,6 @@ class ItemsControllerTest < ActionController::TestCase
     assert_difference('Item.count') do
       post :create, item: { order_id: @item.order_id, product_id: @item.product_id, quantity: @item.quantity }
     end
-
     assert_redirected_to item_path(assigns(:item))
   end
 
