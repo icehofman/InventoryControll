@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<br>
+<% unless notice.nil? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<%end%>
 
 <p>
   <strong>Product:</strong>
-  <%= # noinspection RailsChecklist05
-      Product.find(@stock.product_id).name %>
+  <%= Product.find(@stock.product_id).name %>
 </p>
 
 <p>
@@ -11,5 +13,7 @@
   <%= @stock.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+<ul class="pager">
+  <li class="previous"><%= link_to 'Stocks', stocks_path %></li>
+  <li class="previous"><%= link_to 'Edit Stock', edit_stock_path(@stock) %></li>
+</ul>
