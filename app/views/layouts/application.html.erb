@@ -7,6 +7,8 @@
   <%= # noinspection RailsParamDefResolve
       javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -28,13 +30,33 @@
         <li><%= link_to 'Orders', orders_path %></li>
         <li><%= link_to 'Items', items_path %></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li> Signed in as <%= current_user.email %>. Not you?</li>
+            <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li> <%= link_to 'Sign up', new_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <% end %>
+      </ul>
     </div>
   </div>
 </div>
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-md-5"><%= yield %></div>
+      <div class="col-md-5">
+        <% unless notice.nil? %>
+            <br>
+            <p class="alert alert-success"><%= notice %></p>
+        <%end%>
+        <% unless alert.nil? %>
+            <br>
+            <p class="alert alert-warning"><%= alert %></p>
+        <%end%>
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>
