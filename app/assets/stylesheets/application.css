@@ -15,4 +15,22 @@
  *= require bootstrap
  */
 
-body {  margin-top: 20px; }
+body { margin-top: 20px; }
+
+html,body { height: 100%; }
+
+.jumbotron { min-height: 93.5%; }
+
+.footer {
+    border-top-width: 1px;
+    margin-top: -30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-color: #e7e7e7;
+    background-color: #f8f8f8;
+    border-style: solid;
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
