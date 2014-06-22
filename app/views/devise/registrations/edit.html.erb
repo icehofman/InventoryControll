@@ -36,7 +36,10 @@
   <br>
   <ul class="list-inline">
     <li><p>Unhappy?</p> </li>
-    <li><%= button_to "Cancel my account" , registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></li>
+    <li><%= link_to registration_path(resource_name), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <button type="button" class="btn btn-danger">Yes</button>
+      <% end %>
+    </li>
   </ul>
   <br>
 </div>
