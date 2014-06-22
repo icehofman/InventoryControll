@@ -1,10 +1,12 @@
 <h2><b>Edit <%= resource_name.to_s.humanize %></b></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
-
+    <% unless devise_error_messages!.empty? %>
+        <br>
+        <div class="alert alert-warning"><%= devise_error_messages! %></div>
+    <%end%>
     <div><%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>
     <br>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -25,14 +27,19 @@
     </div>
     <br>
     <div>
-      <%= f.submit "Update", class: "btn btn-default" %>
+      <%= f.submit "Update", class: "btn btn-primary" %>
     </div>
 <% end %>
 <br>
-<h3>Cancel my account</h3>
-<br>
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-<br>
+<div class="alert alert-danger">
+  <h3><strong>Cancel my account</strong></h3>
+  <br>
+  <ul class="list-inline">
+    <li><p>Unhappy?</p> </li>
+    <li><%= button_to "Cancel my account" , registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></li>
+  </ul>
+  <br>
+</div>
 <ul class="pager">
-  <li class="previous"><%= link_to 'Back', :back %></li>
+  <li class="previous"><%= link_to 'Home', root_path %></li>
 </ul>

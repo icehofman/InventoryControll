@@ -29,7 +29,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-            <li><p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><%= current_user.email %></a>. Not you?</p></li>
+            <li><p class="navbar-text navbar-right">Signed in as <a href="/users/edit/" class="navbar-link"><b><%= current_user.email %></b></a>. Not you?</p></li>
             <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
             <li> <%= link_to 'Sign up', new_user_registration_path %></li>
