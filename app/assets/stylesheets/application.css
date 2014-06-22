@@ -15,7 +15,11 @@
  *= require bootstrap
  */
 
-body {  margin-top: 20px; }
+body { margin-top: 20px; }
+
+html,body { height: 100%; }
+
+.jumbotron { min-height: 93.5%; }
 
 .footer {
     border-top-width: 1px;
@@ -28,5 +32,5 @@ body {  margin-top: 20px; }
     margin-bottom: 0px;
     border-bottom-width: 0px;
     border-left-width: 0px;
-    border-right-width: 0px
+    border-right-width: 0px;
 }
