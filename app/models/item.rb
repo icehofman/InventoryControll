@@ -12,7 +12,7 @@ class Item < ActiveRecord::Base
       unless product_id.nil?
   		  Stock.find(product_id).quantity
       else
-        0
+        self.quantity=0
       end
   	end
 
