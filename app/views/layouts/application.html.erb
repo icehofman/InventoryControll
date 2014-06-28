@@ -7,9 +7,10 @@
   <%= # noinspection RailsParamDefResolve
       javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<header class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,9 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <%= # noinspection RubyQuotedStringsInspection
-          link_to 'Iventory Control', root_path, class: "navbar-brand" %>
+      </button><b><%= link_to 'Iventory Control', root_path, class: "navbar-brand" %></b>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -28,15 +27,38 @@
         <li><%= link_to 'Orders', orders_path %></li>
         <li><%= link_to 'Items', items_path %></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><p class="navbar-text navbar-right">Signed in as <a href="/users/edit/" class="navbar-link"><b><%= current_user.email %></b></a>. Not you?</p></li>
+            <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li> <%= link_to 'Sign up', new_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-</div>
+</header>
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-md-5"><%= yield %></div>
+      <div class="col-md-12">
+        <% unless notice.nil? %>
+            <br>
+            <p class="alert alert-success"><%= notice %></p>
+        <%end%>
+        <% unless alert.nil? %>
+            <br>
+            <p class="alert alert-warning"><%= alert %></p>
+        <%end%>
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>
+<footer>
+  <p class="text-center footer">Develop by <a href="mailto:icehofman@hotmail.com"><kbd>ICeHofman</kbd></a>.</p>
+</footer>
 </body>
 </html>

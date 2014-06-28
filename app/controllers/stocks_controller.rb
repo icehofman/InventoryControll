@@ -1,7 +1,8 @@
 # noinspection ALL
 class StocksController < ApplicationController
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+  before_filter :authenticate_user!
+  before_action :set_stock, only: [:show, :edit, :update, :destroy]
   respond_to :json
   # GET /stocks
   # GET /stocks.json
