@@ -37,3 +37,5 @@ gem 'debugger', group: [:development, :test]
 gem 'tzinfo-data'
 gem 'tzinfo'
 gem 'devise'
+
+gem 'newrelic_rpm'
